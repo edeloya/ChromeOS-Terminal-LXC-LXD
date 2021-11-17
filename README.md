@@ -26,7 +26,7 @@ to enter the default _`termina`_ VM.
 
 ![termina](https://user-images.githubusercontent.com/54195989/142133934-6abde3ba-3eb8-4434-9fe1-05427674a725.png)
 
-Once in the _`termina`_ layer, you can use:
+Once in the _`termina`_ layer, you can interact with **LXC** :
 
 <code>lxc launch **_remote_**:**image**</code>
 <br>•**_`remote`_** here being the name of the remote image source
@@ -57,14 +57,15 @@ kali container (all else default/current)
 <br>[`ubuntu`](https://cloud-images.ubuntu.com/releases/) doesn't seem to offer as many things to specify, though does list both the release # and codename/'animal' adjective, meaning both <code>lxc launch _**ubuntu**_:**21.04**</code> and <code>lxc launch _**ubuntu**_:**hirsute**</code> work.
 
 For our purposes, we're temporarily spinning up an **Ubuntu 18.04** image in specific to steal its set-up LXD client since that was the quickest way to get this done. I believe you can just install an LXD client manually inside the `penguin` container, though I used this method for its ease because of my unfamiliarity with LXD/LXC.
-
 Do that with:
-<br>`lxc launch ubuntu:18.04`
 
-![list](https://user-images.githubusercontent.com/54195989/142137304-1665d3e8-8bc4-4df7-897a-6a5a0a394598.png)
+`lxc launch ubuntu:18.04`
+
 <br>If we <code>lxc **list**</code>, we see the current containers. Then we can just `pull` what we need from that container to a folder in /tmp/, and `push` it to the **penguin** container with:
 
-<code>lxc file pull **container_name**/usr/bin/lxc /tmp/lxc</code><br>
+![list](https://user-images.githubusercontent.com/54195989/142137304-1665d3e8-8bc4-4df7-897a-6a5a0a394598.png)
+
+<br><code>lxc file pull **container_name**/usr/bin/lxc /tmp/lxc</code>
 <code>lxc file push /tmp/lxc penguin/usr/local/bin/</code>
 
 Then, still within _`termina`_, we enable some settings for LXD:
