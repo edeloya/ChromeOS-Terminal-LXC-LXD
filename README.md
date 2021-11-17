@@ -71,7 +71,9 @@ Then, still within _`termina`_, we enable some settings for LXD:
 <br><code>lxc config set core.https_address **:8443**</code>
 <br><code>lxc config set core.trust_password **some_password**</code>
 
-We can check they're applied with `lxc config show`. **Feel free to delete the Ubuntu 18.04 container once done copying LXC over**
+We can check they're applied with `lxc config show`.
+<br>**Feel free to delete the Ubuntu 18.04 container once done copying LXC over**
+<br><code>lxc delete **container_name**</code>
 
 ### Terminal
 Now we can return to the _Terminal_ to hook it up to LXD, giving us access to our containers from within **penguin**.
