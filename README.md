@@ -18,15 +18,15 @@ Ctrl+Alt+t to open up _crosh_.<br>`vmc` at this level manages your VMs. Your she
 
 ![crosh](https://user-images.githubusercontent.com/54195989/142129994-b0bee437-969e-47a7-b76f-aa5161fbf870.png)
 
-You can use <code>vmc destroy **vm_name**</code> and <code>vmc start **vm_name**</code> to quickly burn it all down or all spin up new VMs. Use `vmc list` to check what VMs exist. `create` can also be used instead of `start`, the difference being that `start` fully initiates a VM and also enters it. 
+You can use <code>vmc destroy **vm_name**</code> and <code>vmc start **vm_name**</code> to quickly burn down or spin up new VMs. Use `vmc list` to check what VMs exist. `create` can also be used instead of `start`, the difference being that `start` fully initiates a VM and also enters it. 
 
 type
 <code>vmc start **termina**</code>
-to enter the default **termina** VM.
+to enter the default _`termina`_ VM.
 
 ![termina](https://user-images.githubusercontent.com/54195989/142133934-6abde3ba-3eb8-4434-9fe1-05427674a725.png)
 
-Once in the `termina` layer, you can use:
+Once in the _`termina`_ layer, you can use:
 
 <code>lxc launch **_remote_**:**image**</code>
 <br>•**_`remote`_** here being the name of the remote image source
@@ -38,7 +38,7 @@ In this case, I have:
 ![remote_list](https://user-images.githubusercontent.com/54195989/142089061-34b0a99b-ea12-40b0-b9f9-7c373e5650dd.png)
 by default, which is fine because we can access what we need (or would want?) with this. I imagine we can add more image servers, but I did not.
 
-We can check our options for image servers by going to its url. We can see that the [`images`](https://us.lxd.images.canonical.com/) image server (confusingly named, though _tru, I guess_) offers many common Linux distributions.
+We can check an image server's wares by going to its url. We can see that the [`images`](https://us.lxd.images.canonical.com/) image server (confusingly named, though _tru, I guess_) offers many common Linux distributions.
   
 We can use:
 <br><code>lxc launch _**images**_:**distribution[/release][/architecture]** **container_name**</code>
@@ -67,26 +67,26 @@ Do that with:
 <code>lxc file pull **container_name**/usr/bin/lxc /tmp/lxc</code>
 <code>lxc file push /tmp/lxc penguin/usr/local/bin/</code>
 
-Then, still within `Termina`, we enable some settings for LXD:
+Then, still within _`termina`_, we enable some settings for LXD:
 <br><code>lxc config set core.https_address **:8443**</code>
 <br><code>lxc config set core.trust_password **some_password**</code>
 
 We can check they're applied with `lxc config show`.
 
 ### Terminal
-Now we can return to the _Terminal_ to hook it up to LXD, giving us access to our containers from within `penguin`.
+Now we can return to the _Terminal_ to hook it up to LXD, giving us access to our containers from within **penguin**.
 
 Start by getting the container's gateway with `ip -4 route show`, in this case *100.115.92.193*
 ![ip](https://user-images.githubusercontent.com/54195989/142144234-4a1a3d72-d3b2-408b-a331-0ad42c30035e.png)
 
-This is the internal ip that connects the `termina` *chronos* user to its containers, and where we're going to connect so we can communicate with LXC within _Terminal_.
+This is the internal ip that connects the _`termina`_ *chronos* user to its containers. We're going to connect so we can communicate with LXC within _Terminal_.
 <code>lxc remote add **chronos** **ip_address** </code>
 
 then we set *chronos* as the default.
 <code>lxc remote set-default chronos</code>
 ![lxc_remote](https://user-images.githubusercontent.com/54195989/142146070-51bdea29-69e1-4fdf-820c-707f0ab95dc9.png)
 
-Now within the _Terminal_ app / `penguin` container, you will send LXC commands 'up' a layer to be ran by `termina`. You can enter any container you launch with LXC using the command:
+Now within the _Terminal_ app / `penguin` container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command:
 <br><code>lxc exec **container_name** -- bash</code> 
 <br>though I recommend aliasing to just the container name for convenience.
 
