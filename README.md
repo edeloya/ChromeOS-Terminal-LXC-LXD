@@ -70,7 +70,7 @@ If we <code>lxc **list**</code>, we see the current containers. Then we can just
 
 Then, still within _`termina`_, we enable some settings for LXD:
 <br><code>lxc config set core.https_address **:8443**</code>
-<br><code>lxc config set core.trust_password **some_password**</code>
+<br><code>lxc config set core.trust_password **<some_password>**</code>
 
 We can check they're applied with `lxc config show`.
 <br>**Feel free to delete the Ubuntu 18.04 container once done copying LXC over**
@@ -89,7 +89,7 @@ then we set *chronos* as the default.
 
 ![lxc_remote](https://user-images.githubusercontent.com/54195989/142146070-51bdea29-69e1-4fdf-820c-707f0ab95dc9.png)
 
-Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command <code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience.
+Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command <code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience. You still have to switch containers but it can be a 1-step or start in .bashrc. Now with a slightly better terminal 
 
 # TL;DR
 #### Crosh
@@ -99,7 +99,7 @@ Ctrl + Alt + t
 <pre>lxc file pull acab/usr/bin/lxc /tmp/lxc</pre>
 <pre>lxc file push /tmp/lxc penguin/usr/local/bin/</pre>
 <pre>lxc config set core.https_address :8443</pre>
-<code>lxc config set core.trust_password **Your_Password**</code>
+<code>lxc config set core.trust_password **<Your_ACTUAL_Password_Like_The_One_You_Made_For_Root_In_The_Other_>**</code>
 <pre>lxc delete owo</pre>
 
 #### Terminal
