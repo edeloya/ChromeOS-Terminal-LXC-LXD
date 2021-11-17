@@ -11,7 +11,7 @@ For our purposes, refer to this diagram to get an idea of where we are in namesp
 
 
 #  Guide
-### crosh
+## crosh
 We're starting off assuming you have already enabled Dev mode and Linux features are turned on.
 
 Ctrl+Alt+t to open up _crosh_.<br>`vmc` at this level manages your VMs. Your shell should start with **crosh>** , letting you know we're at the _topmost_ layer in our namespaces right now:
@@ -76,14 +76,14 @@ We can check they're applied with `lxc config show`.
 <br>**Feel free to delete the Ubuntu 18.04 container once done copying LXC over**
 <br><code>lxc delete **container_name**</code>
 
-### Terminal
+## Terminal
 Now we can return to the _Terminal_ to hook it up to LXD, giving us access to our containers from within **penguin**.
 
 Start by getting the container's gateway with `ip -4 route show`, in this case *100.115.92.193*
 ![ip](https://user-images.githubusercontent.com/54195989/142144234-4a1a3d72-d3b2-408b-a331-0ad42c30035e.png)
 
 This is the internal ip that connects the _`termina`_ *chronos* user to its containers. We're going to connect so we can communicate with LXC within _Terminal_.
-<br><code>lxc remote add **chronos** **ip_address** </code>
+<br><code>lxc remote add **chronos** **ip_address** </code><br>
 then we set *chronos* as the default.
 <br><code>lxc remote set-default chronos</code>
 
@@ -92,23 +92,23 @@ then we set *chronos* as the default.
 Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command <code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience.
 
 # TL;DR
-######Crosh
+#### Crosh
 Ctrl + Alt + t
 <pre>vmc start termina</pre>
 <pre>lxc launch ubuntu:18.04 owo</pre>
 <pre>lxc file pull acab/usr/bin/lxc /tmp/lxc</pre>
 <pre>lxc file push /tmp/lxc penguin/usr/local/bin/</pre>
 <pre>lxc config set core.https_address :8443</pre>
-<pre>lxc config set core.trust_password</pre> **password**
+<code>lxc config set core.trust_password **Your_Password**</code>
 <pre>lxc delete owo</pre>
 
-#######Terminal
+#### Terminal
 <pre>ACABlol=$(ip route show | awk '{print $3}' | head -n 1)</pre>
 <pre>lxc remote add chronos $ACABlol</pre>
 <pre>lxc remote set-default chronos</pre>
 
 
-#######
+#######################################################################################################
 <br>Refs:
 <br>[Chrome Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/containers_and_vms.md)
 <br>[Crostini Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/crostini_developer_guide.md)
