@@ -40,7 +40,7 @@ by default, which is fine because we can access what we need (or would want?) wi
 We can check an image server's wares by going to its url. We can see that the [`images`](https://us.lxd.images.canonical.com/) image server (confusingly named, though _tru, I guess_) offers many common Linux distributions.
   
 We can use:
-<br><code>lxc launch _**images**_:**distribution[/release][/architecture]** **container_name**</code>
+<br><code>lxc launch **images**:_**distribution[/release][/architecture]** **container_name**_</code>
 <br>to install images with varying degrees of specificity from there (values in _**[ ]**_ are optional).
 
 <br>For example:
