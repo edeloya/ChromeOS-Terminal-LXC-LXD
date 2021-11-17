@@ -14,7 +14,7 @@ For our purposes, refer to this diagram to get an idea of where we are in namesp
 ### crosh
 We're starting off assuming you have already enabled Dev mode and Linux features are turned on.
 
-Ctrl+Alt+t to open up _crosh_.<br>`vmc` at this level manages your VMs. Your shell should start with `crosh> `, letting you know we're at the _topmost_ layer in our namespaces right now:
+Ctrl+Alt+t to open up _crosh_.<br>`vmc` at this level manages your VMs. Your shell should start with **crosh>** , letting you know we're at the _topmost_ layer in our namespaces right now:
 
 ![crosh](https://user-images.githubusercontent.com/54195989/142129994-b0bee437-969e-47a7-b76f-aa5161fbf870.png)
 
@@ -42,7 +42,7 @@ We can check an image server's wares by going to its url. We can see that the [`
   
 We can use:
 <br><code>lxc launch _**images**_:**distribution[/release][/architecture]** **container_name**</code>
-<br>to install images with varying degrees of specificity (values in _**[ ]**_ are optional) from there.
+<br>to install images with varying degrees of specificity from there (values in _**[ ]**_ are optional).
 
 <br>For example:
 <br>centos, release 7, for amd64 (64-bit) architechture from [`images`](https://us.lxd.images.canonical.com/) with its default name
@@ -64,7 +64,7 @@ Do that with:
 ![list](https://user-images.githubusercontent.com/54195989/142137304-1665d3e8-8bc4-4df7-897a-6a5a0a394598.png)
 <br>If we <code>lxc **list**</code>, we see the current containers. Then we can just `pull` what we need from that container to a folder in /tmp/, and `push` it to the *penguin* container with:
 
-<code>lxc file pull **container_name**/usr/bin/lxc /tmp/lxc</code>
+<code>lxc file pull **container_name**/usr/bin/lxc /tmp/lxc</code><br>
 <code>lxc file push /tmp/lxc penguin/usr/local/bin/</code>
 
 Then, still within _`termina`_, we enable some settings for LXD:
@@ -80,20 +80,20 @@ Start by getting the container's gateway with `ip -4 route show`, in this case *
 ![ip](https://user-images.githubusercontent.com/54195989/142144234-4a1a3d72-d3b2-408b-a331-0ad42c30035e.png)
 
 This is the internal ip that connects the _`termina`_ *chronos* user to its containers. We're going to connect so we can communicate with LXC within _Terminal_.
-<code>lxc remote add **chronos** **ip_address** </code>
+<br><code>lxc remote add **chronos** **ip_address** </code>
 
-then we set *chronos* as the default.
-<code>lxc remote set-default chronos</code>
-![lxc_remote](https://user-images.githubusercontent.com/54195989/142146070-51bdea29-69e1-4fdf-820c-707f0ab95dc9.png)
+<br>then we set *chronos* as the default.
+<br><code>lxc remote set-default chronos</code>
+<br>![lxc_remote](https://user-images.githubusercontent.com/54195989/142146070-51bdea29-69e1-4fdf-820c-707f0ab95dc9.png)
 
-Now within the _Terminal_ app / `penguin` container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command:
+Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command:
 <br><code>lxc exec **container_name** -- bash</code> 
 <br>though I recommend aliasing to just the container name for convenience.
 
 <br><br>Refs:
-[Chrome Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/containers_and_vms.md)
-[Crostini Docs]
+<br>[Chrome Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/containers_and_vms.md)
+<br>[Crostini Docs]
 (https://chromium.googlesource.com/chromiumos/docs/+/HEAD/crostini_developer_guide.md)
-[Ubuntu Docs](https://ubuntu.com/blog/using-lxd-on-your-chromebook)
-[post on /r/Crostini](https://www.reddit.com/r/Crostini/comments/fj8ddg/instructions_for_kali_linux_on_crostini/)
-Every `help` command
+<br>[Ubuntu Docs](https://ubuntu.com/blog/using-lxd-on-your-chromebook)
+<br>[post on /r/Crostini](https://www.reddit.com/r/Crostini/comments/fj8ddg/instructions_for_kali_linux_on_crostini/)
+<br>Every `help` command
