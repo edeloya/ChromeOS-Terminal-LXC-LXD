@@ -19,13 +19,12 @@ Ctrl+Alt+t to open up _crosh_.<br>`vmc` at this level manages your VMs. Your she
 
 You can use <code>vmc destroy **vm_name**</code> and <code>vmc start **vm_name**</code> to quickly burn down or spin up new VMs. Use `vmc list` to check what VMs exist. `create` can also be used instead of `start`, the difference being that `start` fully initiates a VM and also enters it. 
 
-type
-<code>vmc start **termina**</code>
-to enter the default _`termina`_ VM.
+type <code>vmc start **termina**</code>
+to enter the default `termina`VM.
 
 ![termina](https://user-images.githubusercontent.com/54195989/142133934-6abde3ba-3eb8-4434-9fe1-05427674a725.png)
 
-Once in the _`termina`_ layer, you can interact with **LXC** :
+Once in the `termina` layer, you can interact with **LXC** :
 
 <code>lxc launch **_remote_**:**image**</code>
 <br>•**_`remote`_** here being the name of the remote image source
@@ -45,15 +44,15 @@ We can use:
 
 <br>For example:
 <br>centos, release 7, for amd64 (64-bit) architechture from [`images`](https://us.lxd.images.canonical.com/) with its default name
-<br><code>lxc launch _**images**_:**centos/7/amd64**</code>
+<br><code>lxc launch **images**:_**centos/7/amd64**_</code>
 
 alpine, from its development branch _edge_ image, named alp-edge
-<br><code>lxc launch _**images**_:**alpine/edge alph-edge**</code>
+<br><code>lxc launch **images**:_**alpine/edge alph-edge**_</code>
 
 kali container (all else default/current)
-<br><code>lxc launch _**images**_:**kali**</code>
+<br><code>lxc launch **images**:_**kali**_</code>
 
-<br>[`ubuntu`](https://cloud-images.ubuntu.com/releases/) doesn't seem to offer as many things to specify, though does list both the release # and codename/'animal' adjective, meaning both <code>lxc launch _**ubuntu**_:**21.04**</code> and <code>lxc launch _**ubuntu**_:**hirsute**</code> work.
+<br>[`ubuntu`](https://cloud-images.ubuntu.com/releases/) doesn't seem to offer as many things to specify, though does list both the release # and codename/'animal' adjective, meaning both <code>lxc launch **ubuntu**:_**21.04**_</code> and <code>lxc launch **ubuntu**:_**hirsute**_</code> work.
 
 For our purposes, we're temporarily spinning up an **Ubuntu 18.04** image in specific to steal its set-up LXD client since that was the quickest way to get this done. I believe you can just install an LXD client manually inside the `penguin` container, though I used this method for its ease because of my unfamiliarity with LXD/LXC.
 Do that with:
@@ -64,10 +63,10 @@ If we <code>lxc **list**</code>, we see the current containers. Then we can just
 
 ![list](https://user-images.githubusercontent.com/54195989/142137304-1665d3e8-8bc4-4df7-897a-6a5a0a394598.png)
 
-<br><code>lxc file pull **container_name**/usr/bin/lxc /tmp/lxc</code>
+<code>lxc file pull **container_name**/usr/bin/lxc /tmp/lxc</code>
 <br><code>lxc file push /tmp/lxc penguin/usr/local/bin/</code>
 
-Then, still within _`termina`_, we enable some settings for LXD:
+Then, still within `termina`, we enable some settings for LXD:
 <br><code>lxc config set core.https_address **:8443**</code>
 <br><code>lxc config set core.trust_password **<some_password>**</code>
 
@@ -81,14 +80,14 @@ Now we can return to the _Terminal_ to hook it up to LXD, giving us access to ou
 Start by getting the container's gateway with `ip -4 route show`, in this case *100.115.92.193*
 ![ip](https://user-images.githubusercontent.com/54195989/142144234-4a1a3d72-d3b2-408b-a331-0ad42c30035e.png)
 
-This is the internal ip that connects the _`termina`_ *chronos* user to its containers. We're going to connect so we can communicate with LXC within _Terminal_.
+This is the internal ip that connects the `termina` *chronos* user to its containers. We're going to connect so we can communicate with LXC within _Terminal_.
 <br><code>lxc remote add **chronos** **ip_address** </code><br>
 then we set *chronos* as the default.
 <br><code>lxc remote set-default chronos</code>
 
 ![lxc_remote](https://user-images.githubusercontent.com/54195989/142146070-51bdea29-69e1-4fdf-820c-707f0ab95dc9.png)
 
-Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command <code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience. You still have to switch containers but it can be a 1-step or start in .bashrc.
+Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by `termina`. You can enter any container you launch with LXC using the command <code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience. You still have to switch containers but it can be a 1-step or start in .bashrc.
   
 Now with a slightly better terminal ! 🎊
 
