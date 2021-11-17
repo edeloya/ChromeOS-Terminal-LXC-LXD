@@ -71,7 +71,7 @@ Then, still within _`termina`_, we enable some settings for LXD:
 <br><code>lxc config set core.https_address **:8443**</code>
 <br><code>lxc config set core.trust_password **some_password**</code>
 
-We can check they're applied with `lxc config show`.
+We can check they're applied with `lxc config show`. **Feel free to delete the Ubuntu 18.04 container once done copying LXC over**
 
 ### Terminal
 Now we can return to the _Terminal_ to hook it up to LXD, giving us access to our containers from within **penguin**.
@@ -86,14 +86,11 @@ This is the internal ip that connects the _`termina`_ *chronos* user to its cont
 <br><code>lxc remote set-default chronos</code>
 <br>![lxc_remote](https://user-images.githubusercontent.com/54195989/142146070-51bdea29-69e1-4fdf-820c-707f0ab95dc9.png)
 
-Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command:
-<br><code>lxc exec **container_name** -- bash</code> 
-<br>though I recommend aliasing to just the container name for convenience.
+Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command <br><code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience.
 
 <br><br>Refs:
 <br>[Chrome Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/containers_and_vms.md)
-<br>[Crostini Docs]
-(https://chromium.googlesource.com/chromiumos/docs/+/HEAD/crostini_developer_guide.md)
+<br>[Crostini Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/crostini_developer_guide.md)
 <br>[Ubuntu Docs](https://ubuntu.com/blog/using-lxd-on-your-chromebook)
 <br>[post on /r/Crostini](https://www.reddit.com/r/Crostini/comments/fj8ddg/instructions_for_kali_linux_on_crostini/)
 <br>Every `help` command
