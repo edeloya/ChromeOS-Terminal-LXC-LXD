@@ -61,12 +61,12 @@ Do that with:
 
 `lxc launch ubuntu:18.04`
 
-<br>If we <code>lxc **list**</code>, we see the current containers. Then we can just `pull` what we need from that container to a folder in /tmp/, and `push` it to the **penguin** container with:
+If we <code>lxc **list**</code>, we see the current containers. Then we can just `pull` what we need from that container to a folder in /tmp/, and `push` it to the **penguin** container with:
 
 ![list](https://user-images.githubusercontent.com/54195989/142137304-1665d3e8-8bc4-4df7-897a-6a5a0a394598.png)
 
 <br><code>lxc file pull **container_name**/usr/bin/lxc /tmp/lxc</code>
-<code>lxc file push /tmp/lxc penguin/usr/local/bin/</code>
+<br><code>lxc file push /tmp/lxc penguin/usr/local/bin/</code>
 
 Then, still within _`termina`_, we enable some settings for LXD:
 <br><code>lxc config set core.https_address **:8443**</code>
@@ -84,14 +84,32 @@ Start by getting the container's gateway with `ip -4 route show`, in this case *
 
 This is the internal ip that connects the _`termina`_ *chronos* user to its containers. We're going to connect so we can communicate with LXC within _Terminal_.
 <br><code>lxc remote add **chronos** **ip_address** </code>
-
-<br>then we set *chronos* as the default.
+then we set *chronos* as the default.
 <br><code>lxc remote set-default chronos</code>
-<br>![lxc_remote](https://user-images.githubusercontent.com/54195989/142146070-51bdea29-69e1-4fdf-820c-707f0ab95dc9.png)
+
+![lxc_remote](https://user-images.githubusercontent.com/54195989/142146070-51bdea29-69e1-4fdf-820c-707f0ab95dc9.png)
 
 Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command <code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience.
 
-<br><br>Refs:
+# TL;DR
+######Crosh
+Ctrl + Alt + t
+<pre>vmc start termina</pre>
+<pre>lxc launch ubuntu:18.04 owo</pre>
+<pre>lxc file pull acab/usr/bin/lxc /tmp/lxc</pre>
+<pre>lxc file push /tmp/lxc penguin/usr/local/bin/</pre>
+<pre>lxc config set core.https_address :8443</pre>
+<pre>lxc config set core.trust_password</pre> **password**
+<pre>lxc delete owo</pre>
+
+#######Terminal
+<pre>ACABlol=$(ip route show | awk '{print $3}' | head -n 1)</pre>
+<pre>lxc remote add chronos $ACABlol</pre>
+<pre>lxc remote set-default chronos</pre>
+
+
+#######
+<br>Refs:
 <br>[Chrome Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/containers_and_vms.md)
 <br>[Crostini Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/crostini_developer_guide.md)
 <br>[Ubuntu Docs](https://ubuntu.com/blog/using-lxd-on-your-chromebook)
