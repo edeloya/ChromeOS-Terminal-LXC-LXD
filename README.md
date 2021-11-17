@@ -62,7 +62,7 @@ Do that with:
 <br>`lxc launch ubuntu:18.04`
 
 ![list](https://user-images.githubusercontent.com/54195989/142137304-1665d3e8-8bc4-4df7-897a-6a5a0a394598.png)
-<br>If we <code>lxc **list**</code>, we see the current containers. Then we can just `pull` what we need from that container to a folder in /tmp/, and `push` it to the *penguin* container with:
+<br>If we <code>lxc **list**</code>, we see the current containers. Then we can just `pull` what we need from that container to a folder in /tmp/, and `push` it to the **penguin** container with:
 
 <code>lxc file pull **container_name**/usr/bin/lxc /tmp/lxc</code><br>
 <code>lxc file push /tmp/lxc penguin/usr/local/bin/</code>
@@ -88,7 +88,7 @@ This is the internal ip that connects the _`termina`_ *chronos* user to its cont
 <br><code>lxc remote set-default chronos</code>
 <br>![lxc_remote](https://user-images.githubusercontent.com/54195989/142146070-51bdea29-69e1-4fdf-820c-707f0ab95dc9.png)
 
-Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command <br><code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience.
+Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command <code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience.
 
 <br><br>Refs:
 <br>[Chrome Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/containers_and_vms.md)
