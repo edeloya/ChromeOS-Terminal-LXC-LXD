@@ -1,5 +1,4 @@
-**TL note:**
-###### All of this I found reading through several sources with a lot of overlapping information as I worked it out. Im just posting with future-self in mind who may not want to piece things together later, and to put it all in one place for anyone with the same goal.
+###### **TL note:**<br><br>All of this I found reading through several sources with a lot of overlapping information as I worked it out. Im just posting with future-self in mind who may not want to piece things together later, and to put it all in one place for anyone with the same goal.
 
 ## Using other containers in ChromeOS (crostini) _Terminal_
 This is a guide for setting up the default _Terminal_ app offered by ChromeOS' crostini Linux env. The goal here is to use the _Terminal_ with other Linux distros you may have installed alongside the default **penguin** (stripped-down Debian) container.
@@ -89,27 +88,29 @@ then we set *chronos* as the default.
 
 ![lxc_remote](https://user-images.githubusercontent.com/54195989/142146070-51bdea29-69e1-4fdf-820c-707f0ab95dc9.png)
 
-Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command <code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience. You still have to switch containers but it can be a 1-step or start in .bashrc. Now with a slightly better terminal 
+Now within the _Terminal_ app / **penguin** container, you will send LXC commands 'up' a layer to be ran by _`termina`_. You can enter any container you launch with LXC using the command <code>lxc exec **container_name** -- bash</code> though I recommend aliasing to just the container name for convenience. You still have to switch containers but it can be a 1-step or start in .bashrc.
+  
+Now with a slightly better terminal ! 🎊
 
 # TL;DR
-#### Crosh
+### Crosh
 Ctrl + Alt + t
 <pre>vmc start termina</pre>
 <pre>lxc launch ubuntu:18.04 owo</pre>
 <pre>lxc file pull acab/usr/bin/lxc /tmp/lxc</pre>
 <pre>lxc file push /tmp/lxc penguin/usr/local/bin/</pre>
 <pre>lxc config set core.https_address :8443</pre>
-<code>lxc config set core.trust_password **<Your_ACTUAL_Password_Like_The_One_You_Made_For_Root_In_The_Other_>**</code>
+<code>lxc config set core.trust_password _**<Your_ACTUAL_Password_Like_The_One_You_Made_For_Root_In_The_Other_>**_</code>
 <pre>lxc delete owo</pre>
 
-#### Terminal
+### Terminal
 <pre>ACABlol=$(ip route show | awk '{print $3}' | head -n 1)</pre>
 <pre>lxc remote add chronos $ACABlol</pre>
 <pre>lxc remote set-default chronos</pre>
 
 
-#######################################################################################################
-<br>Refs:
+
+#############Ref############
 <br>[Chrome Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/containers_and_vms.md)
 <br>[Crostini Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/crostini_developer_guide.md)
 <br>[Ubuntu Docs](https://ubuntu.com/blog/using-lxd-on-your-chromebook)
