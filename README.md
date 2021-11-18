@@ -6,7 +6,8 @@ This is a guide for setting up the default _Terminal_ app offered by ChromeOS' c
 We can achieve the same within the _crosh_ shell by just entering containers manually, but that removes access to several default hotkeys/behavior a slightly more hospitable terminal offers over a shell within Chrome. Also its annoying to do every time.
 
 For our purposes, refer to this diagram to get an idea of where we are in namespaces.
-![namespaces](LOL come back to this)
+
+<p align="center"> <img src="https://user-images.githubusercontent.com/54195989/142301227-cb47ae78-bc34-4ad4-b71c-047e19ff919e.png") </p>
 
 
 #  Guide
