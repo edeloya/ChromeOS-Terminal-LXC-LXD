@@ -105,7 +105,7 @@ Ctrl + Alt + t
 <pre>lxc file push /tmp/lxc penguin/usr/local/bin/</pre>
 <pre>lxc config set core.https_address :8443</pre>
 <pre>lxc config set core.trust_password *********** </pre>
-<pre>lxc delete owo</pre>
+<pre>lxc delete owo -f</pre>
 
 ### Terminal
 <pre>ACABlol=$(ip route show | awk '{print $3}' | head -n 1)</pre>
