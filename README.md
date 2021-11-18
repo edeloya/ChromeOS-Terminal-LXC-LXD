@@ -1,6 +1,6 @@
 ###### **TL note:**<br><br>All of this I found reading through several sources with a lot of overlapping information as I worked it out. Im just posting with future-self in mind who may not want to piece things together later, and to put it all in one place for anyone with the same goal.
 
-## Using other containers in ChromeOS (crostini) _Terminal_
+# Using other containers in ChromeOS (crostini) _Terminal_
 This is a guide for setting up the default _Terminal_ app offered by ChromeOS' crostini Linux env. The goal here is to use the _Terminal_ with other Linux distros you may have installed alongside the default **penguin** (stripped-down) Debian container.
 
 We can achieve the same within the _crosh_ shell by just entering containers manually, but that removes access to several default hotkeys/behavior a slightly more hospitable terminal offers over a shell within Chrome. Also its annoying to do every time.
@@ -9,9 +9,12 @@ For our purposes, refer to this diagram to get an idea of where we are in namesp
 
 <p align="center"> <img src="https://user-images.githubusercontent.com/54195989/142301227-cb47ae78-bc34-4ad4-b71c-047e19ff919e.png") </p>
 
-
+<br>
+  
+  
 #  Guide
 ## crosh
+  
 We're starting off assuming you have already enabled Dev mode and Linux features are turned on.
 
 Ctrl+Alt+t to open up _crosh_.<br>`vmc` at this level manages your VMs. Your shell should start with **crosh>** , letting you know we're at the _topmost_ layer in our namespaces right now:
