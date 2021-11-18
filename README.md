@@ -1,7 +1,7 @@
 ###### **TL note:**<br><br>All of this I found reading through several sources with a lot of overlapping information as I worked it out. Im just posting with future-self in mind who may not want to piece things together later, and to put it all in one place for anyone with the same goal.
 
 ## Using other containers in ChromeOS (crostini) _Terminal_
-This is a guide for setting up the default _Terminal_ app offered by ChromeOS' crostini Linux env. The goal here is to use the _Terminal_ with other Linux distros you may have installed alongside the default **penguin** (stripped-down Debian) container.
+This is a guide for setting up the default _Terminal_ app offered by ChromeOS' crostini Linux env. The goal here is to use the _Terminal_ with other Linux distros you may have installed alongside the default **penguin** (stripped-down) Debian container.
 
 We can achieve the same within the _crosh_ shell by just entering containers manually, but that removes access to several default hotkeys/behavior a slightly more hospitable terminal offers over a shell within Chrome. Also its annoying to do every time.
 
@@ -31,9 +31,10 @@ Once in the `termina` layer, you can interact with **LXC** :
 <br>•**_`remote`_** here being the name of the remote image source
 <br>•**`image`** the name of the image we want to pull down over the internet
 
-we can see what remote image servers we have on hand with `lxc remote list`
+We can see what remote image servers we have on hand with `lxc remote list`
 
 In this case, I have:
+  
 ![remote_list](https://user-images.githubusercontent.com/54195989/142089061-34b0a99b-ea12-40b0-b9f9-7c373e5650dd.png)
 by default, which is fine because we can access what we need (or would want?) with this. I imagine we can add more image servers, but I did not.
 
@@ -107,11 +108,11 @@ Ctrl + Alt + t
 <pre>ACABlol=$(ip route show | awk '{print $3}' | head -n 1)</pre>
 <pre>lxc remote add chronos $ACABlol</pre>
 <pre>lxc remote set-default chronos</pre>
-
-
-
-#############Ref############
-<br>[Chrome Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/containers_and_vms.md)
+<br>
+<br>
+  
+##### **References**:
+[Chrome Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/containers_and_vms.md)
 <br>[Crostini Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/crostini_developer_guide.md)
 <br>[Ubuntu Docs](https://ubuntu.com/blog/using-lxd-on-your-chromebook)
 <br>[post on /r/Crostini](https://www.reddit.com/r/Crostini/comments/fj8ddg/instructions_for_kali_linux_on_crostini/)
