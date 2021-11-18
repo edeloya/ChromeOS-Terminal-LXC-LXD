@@ -104,7 +104,7 @@ Ctrl + Alt + t
 <pre>lxc file pull owo/usr/bin/lxc /tmp/lxc</pre>
 <pre>lxc file push /tmp/lxc penguin/usr/local/bin/</pre>
 <pre>lxc config set core.https_address :8443</pre>
-<code>lxc config set core.trust_password _**<Your_ACTUAL_Password_Like_The_One_You_Made_For_Root_In_The_Other_>**_</code>
+<pre>lxc config set core.trust_password *********** </pre>
 <pre>lxc delete owo</pre>
 
 ### Terminal
