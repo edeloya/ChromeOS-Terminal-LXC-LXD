@@ -67,9 +67,9 @@ Do that with:
 
 If we <code>lxc **list**</code>, we see the current containers. Then we can just `pull` what we need from the `ubuntu` container to /tmp/ on the Chromebook, and `push` it to the **penguin** container with:
 
-_I tried copying directly from one container to the other but theres read-permissions across containers that stop you, which is why we use /tmp to hand it off_
-
 ![list](https://user-images.githubusercontent.com/54195989/142137304-1665d3e8-8bc4-4df7-897a-6a5a0a394598.png)
+
+_I tried copying directly from one container to the other but theres read-permissions across containers that stop you, which is why we use /tmp to hand it off_
 
 <code>lxc file pull **ubuntu**/usr/bin/lxc /tmp/lxc</code>
 <br><code>lxc file push /tmp/lxc **penguin**/usr/local/bin/</code>
