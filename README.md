@@ -59,17 +59,20 @@ kali container (all else default/current)
 
 <br>[`ubuntu`](https://cloud-images.ubuntu.com/releases/) doesn't seem to offer as many things to specify, though does list both the release # and codename/'animal' adjective, meaning both <code>lxc launch **ubuntu**:_**21.04**_</code> and <code>lxc launch **ubuntu**:_**hirsute**_</code> work.
 
-For our purposes, we're temporarily spinning up an **Ubuntu 18.04** image in specific to steal its set-up LXD client since that was the quickest way to get this done. I believe you can just install an LXD client manually inside the `penguin` container, though I used this method for its ease because of my unfamiliarity with LXD/LXC.
+For our purposes, we're temporarily spinning up an **Ubuntu 18.04** image specifically to steal its LXD install since (for me) that was quicker and easier than setting it up myself within the `penguin` container. I believe you can just install an LXD client manually inside the `penguin` container, though I used this method for its ease because of my unfamiliarity with LXD/LXC.
+
 Do that with:
 
-`lxc launch ubuntu:18.04`
+`lxc launch ubuntu:18.04 ubuntu`
 
-If we <code>lxc **list**</code>, we see the current containers. Then we can just `pull` what we need from that container to a folder in /tmp/, and `push` it to the **penguin** container with:
+If we <code>lxc **list**</code>, we see the current containers. Then we can just `pull` what we need from the `ubuntu` container to /tmp/ on the Chromebook, and `push` it to the **penguin** container with:
+
+_I tried copying directly from one container to the other but theres read-permissions that stop you_
 
 ![list](https://user-images.githubusercontent.com/54195989/142137304-1665d3e8-8bc4-4df7-897a-6a5a0a394598.png)
 
-<code>lxc file pull **container_name**/usr/bin/lxc /tmp/lxc</code>
-<br><code>lxc file push /tmp/lxc penguin/usr/local/bin/</code>
+<code>lxc file pull **ubuntu**/usr/bin/lxc /tmp/lxc</code>
+<br><code>lxc file push /tmp/lxc **penguin**/usr/local/bin/</code>
 
 Then, still within `termina`, we enable some settings for LXD:
 <br><code>lxc config set core.https_address **:8443**</code>
