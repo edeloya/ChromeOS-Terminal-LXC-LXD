@@ -83,13 +83,13 @@ We can check they're applied with `lxc config show`.
 <br><code>lxc delete **container_name**</code>
 
 ## Terminal
-Now we can return to the _Terminal_ to hook it up to LXD, giving us access to our containers from within **penguin**.
+Now we can return to the _Terminal_ to hook it up to LXD, giving us access to that *chronos* user in crosh (and lxc and our containers) from within **penguin**.
 
 Start by getting the container's gateway with `ip -4 route show`, in this case *100.115.92.193*
 ![ip](https://user-images.githubusercontent.com/54195989/142144234-4a1a3d72-d3b2-408b-a331-0ad42c30035e.png)
 
 This is the internal ip that connects the `termina` *chronos* user to its containers. We're going to connect so we can communicate with LXC within _Terminal_.
-<br><code>lxc remote add **chronos** **ip_address** </code><br>
+<br><code>lxc remote add **chronos** **<ip_address>** </code><br>
 then we set *chronos* as the default.
 <br><code>lxc remote set-default chronos</code>
 
