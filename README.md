@@ -69,12 +69,13 @@ If we <code>lxc **list**</code>, we see the current containers. Then we can just
 
 <code>lxc file pull **ubuntu**/usr/bin/lxc /tmp/lxc</code>
 <br><code>lxc file push /tmp/lxc **penguin**/usr/local/bin/</code>
+  
 _I tried copying directly from one container to the other but theres read-permissions across containers that stop you, which is why we use /tmp to hand it off_
   
   
 Then, still within `termina`, we enable some settings for LXD:
 <br><code>lxc config set core.https_address **:8443**</code>
-<br><code>lxc config set core.trust_password **<somepassword>**</code>
+<br><code>lxc config set core.trust_password <b>somepassword</b></code>
 
 We can check they're applied with `lxc config show`.
 <br>**Feel free to delete the Ubuntu 18.04 container once done copying LXC over**
