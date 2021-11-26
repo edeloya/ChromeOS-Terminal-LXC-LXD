@@ -74,7 +74,7 @@ _I tried copying directly from one container to the other but theres read-permis
   
 Then, still within `termina`, we enable some settings for LXD:
 <br><code>lxc config set core.https_address **:8443**</code>
-<br><code>lxc config set core.trust_password **<some_password>**</code>
+<br><code>lxc config set core.trust_password **<somepassword>**</code>
 
 We can check they're applied with `lxc config show`.
 <br>**Feel free to delete the Ubuntu 18.04 container once done copying LXC over**
@@ -105,7 +105,7 @@ Ctrl + Alt + t
 <pre>lxc file pull owo/usr/bin/lxc /tmp/lxc</pre>
 <pre>lxc file push /tmp/lxc penguin/usr/local/bin/</pre>
 <pre>lxc config set core.https_address :8443</pre>
-<pre>lxc config set core.trust_password </pre>
+<pre>lxc config set core.trust_password <b>somepassword</b></pre>
 <pre>lxc delete owo -f</pre>
 
 ### Terminal
@@ -113,7 +113,7 @@ Ctrl + Alt + t
 <pre>lxc remote add chronos $ACABlol</pre>
 <pre>lxc remote set-default chronos</pre>
   
-<code>lxc exec **container_name** -- sh</code>
+<pre>lxc exec <b>container_name</b> -- sh</pre>
 <br>
 <br>
   
