@@ -99,7 +99,7 @@ Now within the _Terminal_ app / **penguin** container, you will send LXC command
 Now with a slightly better terminal ! 🎊
 
 # TL;DR
-### Crosh
+### _In Crosh_
 Ctrl + Alt + t
 <pre>vmc start termina</pre>
 <pre>lxc launch ubuntu:18.04 owo</pre>
@@ -109,7 +109,7 @@ Ctrl + Alt + t
 <pre>lxc config set core.trust_password <b>somepassword</b></pre>
 <pre>lxc delete owo -f</pre>
 
-### Terminal
+### _In Terminal_
 <pre>ACABlol=$(ip route show | awk '{print $3}' | head -n 1)</pre>
 <pre>lxc remote add chronos $ACABlol</pre>
 <pre>lxc remote set-default chronos</pre>
