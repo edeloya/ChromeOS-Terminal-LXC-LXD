@@ -106,13 +106,13 @@ Now with a slightly better terminal ! 🎊
 ### _In Crosh_
 Ctrl + Alt + t
 <pre>vmc start termina</pre>
-<br>
+
 ```html
-  lxc launch ubuntu:18.04 owo;/
-  lxc file pull owo/usr/bin/lxc /tmp/lxc;/
-  lxc file push /tmp/lxc penguin/usr/local/bin/;/
-  lxc config set core.https_address :8443;/
-  lxc config set core.trust_password a"really,good;password^
+  lxc launch ubuntu:18.04 owo
+  lxc file pull owo/usr/bin/lxc /tmp/lxc
+  lxc file push /tmp/lxc penguin/usr/local/bin/
+  lxc config set core.https_address :8443
+  lxc config set core.trust_password "a'really,good;password:^)"
 ```
 
 ### _In Terminal_
