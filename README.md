@@ -24,7 +24,7 @@ Ctrl+Alt+t to open up _crosh_.<br>`vmc` at this level manages your VMs. Your she
 You can use <code>vmc destroy **vm_name**</code> and <code>vmc start **vm_name**</code> to quickly burn down or spin up new VMs. Use `vmc list` to check what VMs exist. `create` can also be used instead of `start`, the difference being that `start` fully initiates a VM and also enters it. 
 
 type <code>vmc start **termina**</code>
-to enter the default `termina`VM.
+to enter the default `termina` VM.
 
 ![termina](https://user-images.githubusercontent.com/54195989/142133934-6abde3ba-3eb8-4434-9fe1-05427674a725.png)
 
@@ -57,9 +57,13 @@ alpine, from its development branch _edge_ image, named alp-edge
 kali container (all else default/current)
 <br><code>lxc launch **images**:_**kali**_</code>
 
-<br>[`ubuntu`](https://cloud-images.ubuntu.com/releases/) doesn't seem to offer as many things to specify, though does list both the release # and codename/'animal' adjective, meaning both <code>lxc launch **ubuntu**:_**21.04**_</code> and <code>lxc launch **ubuntu**:_**hirsute**_</code> work.
+<br>The [`ubuntu`](https://cloud-images.ubuntu.com/releases/) image server doesn't seem to offer as many properties, though does list both the release # and codename/'animal' adjective, meaning both 
+<br><code>lxc launch **ubuntu**:_**21.04**_</code>
+and 
+<br><code>lxc launch **ubuntu**:_**hirsute**_</code>
+work.
 
-For our purposes, we're temporarily spinning up an **Ubuntu 18.04** image to steal its LXD install since (for me) that was quicker and easier than setting it up myself within the **penguin** container. I believe you can just install an LXD client manually inside the `penguin` container, though I used this method for its ease because of my unfamiliarity with LXD/LXC.
+For our purposes, we're temporarily spinning up an **Ubuntu 18.04** image to steal its LXD install since (for me) that was quicker and easier than setting it up myself within the **penguin** container. I believe you can just install an LXD client manually inside the `penguin` container, though I used this method for its ease because of my unfamiliarity with LXC.
 
 Do that with:
 
@@ -102,18 +106,22 @@ Now with a slightly better terminal ! 🎊
 ### _In Crosh_
 Ctrl + Alt + t
 <pre>vmc start termina</pre>
-<pre>lxc launch ubuntu:18.04 owo</pre>
-<pre>lxc file pull owo/usr/bin/lxc /tmp/lxc</pre>
-<pre>lxc file push /tmp/lxc penguin/usr/local/bin/</pre>
-<pre>lxc config set core.https_address :8443</pre>
-<pre>lxc config set core.trust_password <b>somepassword</b></pre>
-<pre>lxc delete owo -f</pre>
+<br>
+```html
+  lxc launch ubuntu:18.04 owo;/
+  lxc file pull owo/usr/bin/lxc /tmp/lxc;/
+  lxc file push /tmp/lxc penguin/usr/local/bin/;/
+  lxc config set core.https_address :8443;/
+  lxc config set core.trust_password a"really,good;password^
+```
 
 ### _In Terminal_
-<pre>lxc remote add chronos $(ip route show | awk '{print $3}' | head -n 1)</pre>
-<pre>lxc remote set-default chronos</pre>
+```html
+  lxc remote add chronos $(ip route show | awk '{print $3}' | head -n 1)
+  lxc remote set-default chronos
+```
   
-<pre>lxc exec <b>container_name</b> -- sh</pre>
+<code>lxc exec <b>container_name</b> -- bash</code>
 <br>
 <br>
   
