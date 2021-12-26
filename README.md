@@ -110,8 +110,7 @@ Ctrl + Alt + t
 <pre>lxc delete owo -f</pre>
 
 ### _In Terminal_
-<pre>ACABlol=$(ip route show | awk '{print $3}' | head -n 1)</pre>
-<pre>lxc remote add chronos $ACABlol</pre>
+<pre>lxc remote add chronos $(ip route show | awk '{print $3}' | head -n 1)</pre>
 <pre>lxc remote set-default chronos</pre>
   
 <pre>lxc exec <b>container_name</b> -- sh</pre>
