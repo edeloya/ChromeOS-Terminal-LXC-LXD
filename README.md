@@ -111,6 +111,7 @@ Ctrl + Alt + t
   lxc launch ubuntu:18.04 owo
   lxc file pull owo/usr/bin/lxc /tmp/lxc
   lxc file push /tmp/lxc penguin/usr/local/bin/
+  lxc delete owo -f
   lxc config set core.https_address :8443
   lxc config set core.trust_password "a'really,good;password:^)"
 ```
